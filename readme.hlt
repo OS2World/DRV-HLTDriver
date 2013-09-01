@@ -1,0 +1,16 @@
+This driver is intended to keep systems cooler by calling HLT without having to patch the kernel.
+Intstall the idlehlt.sys as a normal device driver.  Then when booted up run idlehlt.exe.  
+Unfortunately, I have not seen any advantage on my own system but I was asked to make it available.
+This is taken from the helloworld originally written by Alger Pike and modified to OpenWatcom by Mike Greene.
+There are absolutely no guarantees that this will not blow up your system.
+There are now three executables... idlehlt.exe is a single threaded app that does not take into account affinity
+(multiple processors),idlehlt-af.exe is single threaded but does take into account affinity, and idlehlt-th.exe
+is multi-threaded and takes into account affinity. So far I have not been able to discern if there is a 
+practical difference during use.  At idle I am not seeing a difference but perhaps under load there will be. 
+
+Have now added the helloworld source tree under hello directory.  Also pulled the 32 bit driver template 
+from ecomstation.ru and it is under 32 directory (have not figured out how to use it yet so no modifications 
+for HLT has been done to it).  Test directory contains code where I test code prior to trying to add it to 
+the HLT driver to make sure I have the concept I am trying to add down before trying to troubleshoot it in 
+the driver framework.
+Andy

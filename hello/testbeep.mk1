@@ -1,0 +1,23 @@
+!define BLANK ""
+e:\beepdriver\test.obj : e:\beepdriver\test.c .AUTODEPEND
+ @e:
+ cd e:\beepdriver
+ *wcc386 test.c -i=E:\WATCOM\h;E:\WATCOM\h\os2 -w4 -e25 -zq -otexan -d2 -mf &
+-5r -bt=os2
+
+e:\beepdriver\testbeep.exe : e:\beepdriver\test.obj .AUTODEPEND
+ @e:
+ cd e:\beepdriver
+ @%write testbeep.lk1 NAME testbeep
+ @%append testbeep.lk1 FIL test.obj
+ @%append testbeep.lk1 
+!ifneq BLANK ""
+ *wlib -q -n -b testbeep.imp 
+ @%append testbeep.lk1 LIBR testbeep.imp
+!endif
+ *wlink SYS os2v2 op m d all op st=8192 op maxe=25 op q op symf @testbeep.lk&
+1
+!ifneq BLANK ""
+ rc -i $[: -i E:\WATCOM\h -i E:\WATCOM\h\os2  testbeep.exe
+!endif
+

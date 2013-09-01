@@ -1,0 +1,3 @@
+idlehlt-th.c(104): Warning! W102: Type mismatch (warning)
+idlehlt-th.c(104): Note! I2003: source conversion type is 'void (*)(void )'
+idlehlt-th.c(104): Note! I2004: target conversion type is 'void (*)(void *__p1)'
